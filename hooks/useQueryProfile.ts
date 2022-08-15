@@ -6,7 +6,6 @@ import { useMutateProfile } from './useMutateProfile'
 
 export const useQueryProfile = () => {
   const session = useStore((state) => state.session)
-  const editedProfile = useStore((state) => state.editedProfile)
   const update = useStore((state) => state.updateEditedProfile)
   const { createProfileMutation } = useMutateProfile()
   const getProfile = async () => {
@@ -23,7 +22,10 @@ export const useQueryProfile = () => {
         avatar_url: '',
       })
     }
-    if (status !== 406) throw new Error(error?.message)
+    if (status !== 406 && status !== 200) {
+      console.log(status)
+      throw new Error(error?.message)
+    }
     return data
   }
 
