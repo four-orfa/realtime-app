@@ -23,7 +23,7 @@ export const useSubscribeNotice = () => {
               id: payload.new.id,
               created_at: payload.new.created_at,
               content: payload.new.content,
-              user_id: payload.new.content,
+              user_id: payload.new.user_id,
             },
           ]
         )
